@@ -1,7 +1,8 @@
 # 🎥 Demo Screenshots
 
 #### User Registration with Captcha Verification
-![Registration Form](/demo/custom-captcha-img.png) ![Captcha Challenge](/demo/custom-captcha-img-demo.png)
+<img src="/demo/custom-captcha-img.png" alt="Registration Form" width="45%" style="display: inline-block; margin-right: 10px;">
+<img src="/demo/custom-captcha-img-demo.png" alt="Captcha Challenge" width="45%" style="display: inline-block;">
 
 # Custom Captcha
 
