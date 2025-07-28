@@ -1,12 +1,17 @@
 # 🎥 Demo Screenshots
 
-#### User Registration with Captcha Verification
-![Registration Form](/demo/custom-captcha-img.png)
-*Clean registration interface with integrated captcha verification button*
+#### User Registration with Captcha Verification & Interactive Sliding Puzzle Challenge
 
-#### Interactive Sliding Puzzle Challenge  
-![Captcha Challenge](/demo/custom-captcha-img-demo.png)
-*Users slide the puzzle piece to the correct position to verify they're human*
+<div style="display: flex; gap: 20px;">
+  <div>
+    <p><strong>Registration Form</strong></p>
+    <img src="/demo/custom-captcha-img.png" alt="Registration Form" width="400">
+  </div>
+  <div>
+    <p><strong>Captcha Challenge</strong></p>
+    <img src="/demo/custom-captcha-img-demo.png" alt="Captcha Challenge" width="400">
+  </div>
+</div>
 
 # Custom Captcha
 
