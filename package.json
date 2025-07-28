@@ -1,0 +1,62 @@
+{
+  "name": "@baanihali/captcha",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A customizable sliding puzzle captcha component for React applications with server-side validation",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./server": {
+      "import": "./dist/server/index.js",
+      "types": "./dist/server/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsup src/index.ts src/server/index.ts --format esm --dts --external react --inject-style",
+    "publish": "build && npm publish --access public"
+  },
+  "keywords": [
+    "captcha",
+    "react",
+    "puzzle",
+    "security",
+    "bot-protection",
+    "form-validation",
+    "sliding-puzzle",
+    "typescript",
+    "nextjs-captcha",
+    "react-captcha"
+  ],
+  "author": "Murtaza Baanihali",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/murtazabaanihali/captcha.git"
+  },
+  "homepage": "https://github.com/murtazabaanihali/captcha#readme",
+  "bugs": {
+    "url": "https://github.com/murtazabaanihali/captcha/issues"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "dependencies": {
+    "server-only": "^0.0.1",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "react": "^18.0.0",
+    "typescript": "^5.0.0",
+    "tsup": "^8.5.0"
+  }
+}
