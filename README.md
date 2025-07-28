@@ -2,9 +2,9 @@
 
 #### User Registration with Captcha Verification
 <p>
-<img src="/demo/custom-captcha-img.png" alt="Registration Form" width="45%">
+<img src="1.png" alt="Registration Form" width="45%" style="display: inline-block; vertical-align: top;">
 &nbsp; &nbsp; &nbsp; &nbsp;
-<img src="/demo/custom-captcha-img-demo.png" alt="Captcha Challenge" width="45%">
+<img src="2.png" alt="Captcha Challenge" width="45%" style="display: inline-block; vertical-align: top;">
 </p>
 
 # Custom Captcha
@@ -29,7 +29,7 @@ A customizable sliding puzzle captcha component for React applications with serv
 ## 📦 Installation
 
 ```bash
-npm install custom-captcha
+npm install @baanihali/captcha
 ```
 
 ## 🔄 How It Works
@@ -54,7 +54,7 @@ This captcha system follows a secure workflow:
 'use client';
 
 import { useState } from 'react';
-import CaptchaComponent from 'custom-captcha/client';
+import CaptchaComponent from '@baanihali/captcha/client';
 import { 
   createCaptcha, 
   verifyCaptcha, 
@@ -172,7 +172,7 @@ import {
   createCaptcha as createCaptchaLib, 
   verifyCaptcha as verifyCaptchaLib,
   hasCaptchaBeenVerified 
-} from 'custom-captcha/server';
+} from '@baanihali/captcha/server';
 import Redis from 'ioredis';
 import bcrypt from 'bcryptjs';
 
@@ -199,10 +199,10 @@ export async function verifyCaptcha(id: string, value: string) {
       captchaId: id,
       value,
       getCaptchaValue: async (id) => {
-        return await redis.get(`captcha:${id}`);
+        return redis.get(`captcha:${id}`);
       },
       changeCaptchaIdOnSuccess: async (id, value) => {
-        await redis.setex(`captcha:${id}`, 600, value);
+        redis.setex(`captcha:${id}`, 600, value);
       }
     });
     
@@ -222,9 +222,13 @@ export async function signup(data: {
     const { email, password, name, captchaId } = data;
     
     // Verify captcha first
-    const captchaValue = await redis.get(`captcha:${captchaId}`);
+    const isVerified = await hasCaptchaBeenVerified({
+      captchaId: captchaId,
+      getCaptchaValue: async (id) => await redis.get(`captcha:${id}`)
+    });
+
     
-    if (!captchaValue || !(await hasCaptchaBeenVerified(captchaValue))) {
+    if (!isVerified) {
       return {
         success: false,
         message: 'Please complete the captcha verification'
@@ -256,7 +260,7 @@ export async function signup(data: {
 
 ```jsx
 import React, { useState } from 'react';
-import CaptchaComponent from 'custom-captcha/client';
+import CaptchaComponent from '@baanihali/captcha/client';
 
 function SignupForm() {
   const [loading, setLoading] = useState(false);
@@ -372,7 +376,7 @@ const express = require('express');
 const cors = require('cors');
 const Redis = require('ioredis');
 const bcrypt = require('bcryptjs');
-const { createCaptcha, verifyCaptcha, hasCaptchaBeenVerified } = require('custom-captcha/server');
+const { createCaptcha, verifyCaptcha, hasCaptchaBeenVerified } = require('@baanihali/captcha/server');
 
 const app = express();
 const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
@@ -424,13 +428,16 @@ app.post('/auth/signup', async (req, res) => {
     const { email, password, name, captchaId } = req.body;
     
     // Verify captcha
-    const captchaValue = await redis.get(`captcha:${captchaId}`);
-    
-    if (!captchaValue || !(await hasCaptchaBeenVerified(captchaValue))) {
+    const isVerified = await hasCaptchaBeenVerified({
+      captchaId: captchaId,
+      getCaptchaValue: async (id) => await redis.get(`captcha:${id}`)
+    });
+
+    if (!isVerified) {
       return res.status(400).json({ 
         message: 'Please complete the captcha verification' 
       });
-    }
+    };
 
     // Check if user exists (implement your user checking logic)
     const existingUser = await checkUserExists(email);
@@ -484,7 +491,7 @@ export class CaptchaController {
 
 ```typescript
 import { Injectable } from '@nestjs/common';
-import { createCaptcha, verifyCaptcha } from 'custom-captcha/server';
+import { createCaptcha, verifyCaptcha } from '@baanihali/captcha/server';
 import Redis from 'ioredis';
 
 @Injectable()
@@ -529,7 +536,7 @@ interface CustomCaptchaProps {
   }>;
   verifyCaptcha: (id: string, value: string) => Promise<{
     success?: boolean;   // Verification success status
-    error?: string;      // Error message if verification fails
+    reason?: string;      // Error message if verification fails
   }>;
 }
 ```
