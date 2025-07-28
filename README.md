@@ -2,9 +2,9 @@
 
 #### User Registration with Captcha Verification
 <p>
-<img src="1.png" alt="Registration Form" width="45%" style="display: inline-block; vertical-align: top;">
+<img src="/demo/1.png" alt="Registration Form" width="45%" style="display: inline-block; vertical-align: top;">
 &nbsp; &nbsp; &nbsp; &nbsp;
-<img src="2.png" alt="Captcha Challenge" width="45%" style="display: inline-block; vertical-align: top;">
+<img src="/demo/2.png" alt="Captcha Challenge" width="45%" style="display: inline-block; vertical-align: top;">
 </p>
 
 # Custom Captcha
