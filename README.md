@@ -527,16 +527,18 @@ export class CaptchaService {
 ### Client Component Props
 
 ```typescript
+interface CaptchaData {
+  puzzle: string;      // Base64 encoded puzzle piece
+  background: string;  // Base64 encoded background
+  id: string;          // Unique captcha ID
+}
+
 interface CustomCaptchaProps {
   loading: boolean;
-  refreshCaptcha: () => Promise<{
-    background: string;  // Base64 or URL of background image
-    puzzle: string;      // Base64 or URL of puzzle piece
-    id: string;          // Unique captcha identifier
-  }>;
+  refreshCaptcha: () => Promise<CaptchaData> | { error: string; } | undefined | null>;
   verifyCaptcha: (id: string, value: string) => Promise<{
     success?: boolean;   // Verification success status
-    reason?: string;      // Error message if verification fails
+    error?: string;      // Error message if verification fails
   }>;
 }
 ```
@@ -583,12 +585,17 @@ interface VerificationResult {
 }
 ```
 
-#### `hasCaptchaBeenVerified(value)`
+#### `hasCaptchaBeenVerified(props)`
 
 Utility to check if a captcha has been successfully verified.
 
 ```typescript
-hasCaptchaBeenVerified(value: string): Promise<boolean>
+interface HasCaptchaBeenVerifiedProps {
+  captchaId: string,
+  getCaptchaValue: (captchaId: string) => Promise<string | null | undefined>
+};
+
+// Returns boolean
 ```
 
 ## 🎨 Styling Customization
