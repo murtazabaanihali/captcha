@@ -1,8 +1,7 @@
 # 🎥 Demo Screenshots
 
-| User Registration with Captcha Verification | Interactive Sliding Puzzle Challenge |
-|:---:|:---:|
-| ![Registration Form](/demo/custom-captcha-img.png) | ![Captcha Challenge](/demo/custom-captcha-img-demo.png) |
+#### User Registration with Captcha Verification
+![Registration Form](/demo/custom-captcha-img.png) ![Captcha Challenge](/demo/custom-captcha-img-demo.png)
 
 # Custom Captcha
 
