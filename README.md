@@ -1,11 +1,11 @@
 # 🎥 Demo Screenshots
 
 #### User Registration with Captcha Verification
-![Registration Form](./demo/custom-captcha-img.jpg)
+![Registration Form](https://github.com/murtazabaanihali/demo/custom-captcha-img.jpg)
 *Clean registration interface with integrated captcha verification button*
 
 #### Interactive Sliding Puzzle Challenge  
-![Captcha Challenge](./demo/custom-captcha-img-demo.jpg)
+![Captcha Challenge](https://github.com/murtazabaanihali/demo/custom-captcha-img-demo.jpg)
 *Users slide the puzzle piece to the correct position to verify they're human*
 
 # Custom Captcha
