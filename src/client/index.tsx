@@ -220,6 +220,7 @@ const CaptchaComponent = ({
                         disabled={loading}
                         title="Refresh"
                         className="custom-button"
+                        type="button"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -243,6 +244,7 @@ const CaptchaComponent = ({
                         disabled={loading || !captcha}
                         title="Verify"
                         className="custom-button verify-button"
+                        type="button"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -273,7 +275,6 @@ const CaptchaComponent = ({
  * You can import this component using:
  * `import CaptchaComponent from 'custom-captcha/client';`
  * 
- * @version 1.0.0
  * @author Murtaza Baanihali
  * @license MIT
  */

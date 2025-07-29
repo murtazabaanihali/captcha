@@ -34,6 +34,7 @@
   overflow: hidden;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  bottom: 40px;
 }
 
 .custom-captcha-hidden {
