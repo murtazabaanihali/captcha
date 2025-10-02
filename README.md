@@ -7,9 +7,17 @@
 <img src="/demo/2.png" alt="Captcha Challenge" width="45%" style="display: inline-block; vertical-align: top;">
 </p>
 
+# 🧩 Custom Captcha
+
+> ⚠️ **Important**:  
+> This package is designed for **Node.js server-side environments** or those who support [**sharp**](https://www.npmjs.com/package/sharp) (e.g. Next.js API routes or server actions, Express, NestJS, etc.).  
+> It uses [**sharp**](https://www.npmjs.com/package/sharp) for image manipulation, which relies on **native Node.js bindings**.  
+> If you want to run captchas inside **Cloudflare Workers or any V8 isolate/serverless edge runtime**, check out our alternative Worker-compatible package 👉 [@baanihali/captcha-workers](https://github.com/murtazabaanihali/captcha-workers) (WASM-based, no native deps)
+
 # Custom Captcha
 
-A customizable sliding puzzle captcha component for React applications with server-side validation. Perfect for preventing bot registrations and enhancing form security.
+A customizable sliding puzzle captcha component for React applications with **server-side validation**.  
+Perfect for preventing bot registrations and enhancing form security when running a Node.js backend.
 
 ![Custom Captcha Demo](https://img.shields.io/badge/captcha-sliding%20puzzle-blue)
 ![TypeScript](https://img.shields.io/badge/typescript-support-blue)
